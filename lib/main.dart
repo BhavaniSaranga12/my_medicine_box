@@ -4,16 +4,11 @@ import 'package:my_medicine_box/presentation/pages/login_page.dart';
 import 'package:my_medicine_box/presentation/pages/profile.dart';
 import 'package:my_medicine_box/presentation/pages/register_page.dart';
 import 'package:my_medicine_box/presentation/pages/splash_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:my_medicine_box/presentation/theme/dark_theme.dart';
 import 'package:my_medicine_box/presentation/theme/light_theme.dart';
-import 'firebase_options.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      //options: DefaultFirebaseOptions.currentPlatform,
-      );
+void main() {
   runApp(
     MyApp(),
   );

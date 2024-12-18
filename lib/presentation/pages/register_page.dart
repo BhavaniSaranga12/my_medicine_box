@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_medicine_box/authentication/auth_services.dart';
+
 import 'package:my_medicine_box/presentation/components/app_assets.dart';
 import 'package:my_medicine_box/presentation/pages/home_page.dart';
 import 'package:my_medicine_box/presentation/pages/login_page.dart';
@@ -122,22 +121,11 @@ class _RegisterPageState extends State<RegisterPage> {
                               fontSize: 25, fontWeight: FontWeight.bold)),
                           shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)))),
-                      onPressed: () async {
-                        final authServices = AuthServices();
-
-                        await authServices.SignUp(
+                      onPressed: () {
+                        Navigator.push(
                           context,
-                          emailController,
-                          passwordController,
-                          confirmpasswordController,
+                          MaterialPageRoute(builder: (context) => HomePage()),
                         );
-
-                        if (FirebaseAuth.instance.currentUser != null) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-                        }
                       },
                       child: Text(
                         "sign up",
@@ -189,17 +177,11 @@ class _RegisterPageState extends State<RegisterPage> {
                             fontSize: 25, fontWeight: FontWeight.w300)),
                         shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                    onPressed: () async {
-                      final authServices = AuthServices();
-
-                      await authServices.signinwithgoogle(context);
-
-                      if (FirebaseAuth.instance.currentUser != null) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
-                      }
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
                     },
                     label: const Text("sign in with google"),
                   ),

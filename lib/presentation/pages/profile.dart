@@ -1,13 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_medicine_box/authentication/auth_services.dart';
+
 import 'package:my_medicine_box/presentation/components/profile_buttons.dart';
 import 'package:my_medicine_box/presentation/pages/login_page.dart';
 
 class Profile extends StatelessWidget {
   Profile({super.key});
-
-  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +25,27 @@ class Profile extends StatelessWidget {
                     SizedBox(
                       height: 40,
                     ),
-                    CircleAvatar(
-                      backgroundImage: user.photoURL != null
-                          ? NetworkImage(user.photoURL!)
-                          : null,
-                      backgroundColor: Colors.grey,
-                      maxRadius: 50,
-                      child: user.photoURL == null
-                          ? const Icon(Icons.person,
-                              size: 50, color: Colors.white)
-                          : null,
-                    ),
+                    // CircleAvatar(
+                    //   backgroundImage: user.photoURL != null
+                    //       ? NetworkImage(user.photoURL!)
+                    //       : null,
+                    //   backgroundColor: Colors.grey,
+                    //   maxRadius: 50,
+                    //   child: user.photoURL == null
+                    //       ? const Icon(Icons.person,
+                    //           size: 50, color: Colors.white)
+                    //       : null,
+                    // ),
                     SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      user.displayName ?? user.email ?? "No Name",
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.inversePrimary),
-                    )
+                    // Text(
+                    //   user.displayName ?? user.email ?? "No Name",
+                    //   style: TextStyle(
+                    //       fontSize: 25,
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Theme.of(context).colorScheme.inversePrimary),
+                    // )
                   ],
                 ),
               )),
@@ -81,11 +78,7 @@ class Profile extends StatelessWidget {
                       icon: Icons.settings_outlined),
                   myButton(
                       text: "logout",
-                      onTap: () async {
-                        final authServices = AuthServices();
-
-                        await authServices.Logout(context);
-
+                      onTap: () {
                         // Navigate to the Login Page after Sign-Out
                         Navigator.pushReplacement(
                           context,
